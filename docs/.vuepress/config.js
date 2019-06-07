@@ -29,9 +29,12 @@ module.exports = {
         link: 'https://github.com/KalorF'
       }
     ],
+    // repo: 'kalorF/myBlog',
+    // repoLabel: '查看源码',
+    docsRepo: 'kalor/myBlog',
     sidebar: sidebar,
     editLinks: true,
     // 默认为 "Edit this page"
-    editLinkText: '在GitHub中编辑'
+    editLinkText: '在GitHub中编辑此页'
   }
 }
