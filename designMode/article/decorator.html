@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>装饰器模式 | Kalor 个人博客</title>
+    <meta name="description" content="分享前端知识">
+    
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.25498b60.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.db8b6553.js" as="script"><link rel="preload" href="/myBlog/assets/js/6.fa32d2d0.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.b48669c7.js"><link rel="prefetch" href="/myBlog/assets/js/11.e45517cc.js"><link rel="prefetch" href="/myBlog/assets/js/12.d56cde9f.js"><link rel="prefetch" href="/myBlog/assets/js/13.55302e31.js"><link rel="prefetch" href="/myBlog/assets/js/14.e03912cf.js"><link rel="prefetch" href="/myBlog/assets/js/15.4ddbdaf7.js"><link rel="prefetch" href="/myBlog/assets/js/16.b3388d9e.js"><link rel="prefetch" href="/myBlog/assets/js/17.6744ac4a.js"><link rel="prefetch" href="/myBlog/assets/js/18.f7628af3.js"><link rel="prefetch" href="/myBlog/assets/js/19.e5618fb6.js"><link rel="prefetch" href="/myBlog/assets/js/2.4a1d1992.js"><link rel="prefetch" href="/myBlog/assets/js/20.177f4cdd.js"><link rel="prefetch" href="/myBlog/assets/js/21.bb6b33f6.js"><link rel="prefetch" href="/myBlog/assets/js/22.c0c744f9.js"><link rel="prefetch" href="/myBlog/assets/js/23.c6405ffe.js"><link rel="prefetch" href="/myBlog/assets/js/24.315a681c.js"><link rel="prefetch" href="/myBlog/assets/js/25.13d12737.js"><link rel="prefetch" href="/myBlog/assets/js/26.28abbe36.js"><link rel="prefetch" href="/myBlog/assets/js/27.9a19f18c.js"><link rel="prefetch" href="/myBlog/assets/js/28.93e1de04.js"><link rel="prefetch" href="/myBlog/assets/js/29.d0be6967.js"><link rel="prefetch" href="/myBlog/assets/js/3.1cb3eb40.js"><link rel="prefetch" href="/myBlog/assets/js/30.43b10651.js"><link rel="prefetch" href="/myBlog/assets/js/31.c1639363.js"><link rel="prefetch" href="/myBlog/assets/js/32.7385d3b6.js"><link rel="prefetch" href="/myBlog/assets/js/33.944107d0.js"><link rel="prefetch" href="/myBlog/assets/js/34.48fa491d.js"><link rel="prefetch" href="/myBlog/assets/js/35.2abcc1cc.js"><link rel="prefetch" href="/myBlog/assets/js/4.79cc01ee.js"><link rel="prefetch" href="/myBlog/assets/js/5.447d9f96.js"><link rel="prefetch" href="/myBlog/assets/js/7.031ab67e.js"><link rel="prefetch" href="/myBlog/assets/js/8.a037560e.js"><link rel="prefetch" href="/myBlog/assets/js/9.a43a2cab.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.25498b60.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><!----> <span class="site-name">Kalor 个人博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">博客首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">文章归档</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/javascriptBase/article/varType.html" class="nav-link">javascript基础</a></li><li class="dropdown-item"><!----> <a href="/myBlog/javascriptAdvanced/article/prototype.html" class="nav-link">javascript进阶</a></li><li class="dropdown-item"><!----> <a href="/myBlog/designMode/article/rule.html" class="nav-link">前端设计模式</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/KalorF" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">博客首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">文章归档</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/javascriptBase/article/varType.html" class="nav-link">javascript基础</a></li><li class="dropdown-item"><!----> <a href="/myBlog/javascriptAdvanced/article/prototype.html" class="nav-link">javascript进阶</a></li><li class="dropdown-item"><!----> <a href="/myBlog/designMode/article/rule.html" class="nav-link">前端设计模式</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/KalorF" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/myBlog/all/" class="sidebar-link">目录</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>前端设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/myBlog/designMode/article/rule.html" class="sidebar-link">S O L I D 五大设计原则</a></li><li><a href="/myBlog/designMode/article/jquery.html" class="sidebar-link">JQuery封装</a></li><li><a href="/myBlog/designMode/article/factory.html" class="sidebar-link">工厂模式</a></li><li><a href="/myBlog/designMode/article/singleton.html" class="sidebar-link">单例模式</a></li><li><a href="/myBlog/designMode/article/proxy.html" class="sidebar-link">代理模式</a></li><li><a href="/myBlog/designMode/article/observer.html" class="sidebar-link">观察者模式</a></li><li><a href="/myBlog/designMode/article/iteration.html" class="sidebar-link">迭代器模式</a></li><li><a href="/myBlog/designMode/article/status.html" class="sidebar-link">状态模式</a></li><li><a href="/myBlog/designMode/article/decorator.html" class="active sidebar-link">装饰器模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/designMode/article/decorator.html#装饰器模式介绍" class="sidebar-link">装饰器模式介绍</a></li><li class="sidebar-sub-header"><a href="/myBlog/designMode/article/decorator.html#设计原则验证" class="sidebar-link">设计原则验证</a></li><li class="sidebar-sub-header"><a href="/myBlog/designMode/article/decorator.html#事例" class="sidebar-link">事例</a></li></ul></li><li><a href="/myBlog/designMode/article/other.html" class="sidebar-link">其它</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="装饰器模式"><a href="#装饰器模式" aria-hidden="true" class="header-anchor">#</a> 装饰器模式</h1> <h2 id="装饰器模式介绍"><a href="#装饰器模式介绍" aria-hidden="true" class="header-anchor">#</a> 装饰器模式介绍</h2> <ul><li>为对象添加新功能</li> <li>不改变其原有的结构和功能</li></ul> <h2 id="设计原则验证"><a href="#设计原则验证" aria-hidden="true" class="header-anchor">#</a> 设计原则验证</h2> <ul><li>将现有对象和装饰器进行分离，两者独立存在</li> <li>符合开放封闭原则</li></ul> <h2 id="事例"><a href="#事例" aria-hidden="true" class="header-anchor">#</a> 事例</h2> <ul><li>事例1</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'画一个圆形'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Decorator</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">circle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>circle <span class="token operator">=</span> circle
+  <span class="token punctuation">}</span>
+  <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>circle<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setRedBorder</span><span class="token punctuation">(</span>circle<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">setRedBorder</span><span class="token punctuation">(</span><span class="token parameter">circle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'设置为红色边框'</span><span class="token punctuation">,</span> circle<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> circle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+circle<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'---分割线----'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> des <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Decorator</span><span class="token punctuation">(</span>circle<span class="token punctuation">)</span>
+des<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 打印结果</span>
+<span class="token comment">// 画一个圆形</span>
+<span class="token comment">// ---分割线----</span>
+<span class="token comment">// 画一个圆形</span>
+<span class="token comment">// 设置为红色边框 Circle{}</span>
+</code></pre></div><ul><li>事例2 （ES 7 装饰器）</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">testDec</span><span class="token punctuation">(</span><span class="token parameter">isDec</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    target<span class="token punctuation">.</span>isDec <span class="token operator">=</span> isDec
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">testDec</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Demo</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>Demo<span class="token punctuation">.</span>isDec<span class="token punctuation">)</span> <span class="token comment">// false</span>
+</code></pre></div><ul><li>事例3</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">mixins</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token operator">...</span>list<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">mixins</span><span class="token punctuation">(</span>Foo<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// foo</span>
+</code></pre></div><ul><li>事例4</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">readonly</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  descriptor<span class="token punctuation">.</span>writable <span class="token operator">=</span> <span class="token boolean">false</span>
+  <span class="token keyword">return</span> descriptor
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token string">'A'</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>second <span class="token operator">=</span> <span class="token string">'B'</span>
+  <span class="token punctuation">}</span>
+  @readonly
+  <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>second<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// A B</span>
+</code></pre></div><ul><li>事例5</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> oldValue <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value
+  descriptor<span class="token punctuation">.</span><span class="token function-variable function">value</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`calling </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> with`</span></span><span class="token punctuation">,</span> arguments<span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token function">oldValue</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span> <span class="token comment">// 执行方法并且传递参数</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> descriptor
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Math</span> <span class="token punctuation">{</span>
+  @log
+  <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> math <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Math</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> result <span class="token operator">=</span> math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token comment">// 6</span>
+</code></pre></div></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/kalorF/myBlog/edit/master/docs/designMode/article/decorator.md" target="_blank" rel="noopener noreferrer">在GitHub中编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/myBlog/designMode/article/status.html" class="prev">
+          状态模式
+        </a></span> <span class="next"><a href="/myBlog/designMode/article/other.html">
+          其它
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/myBlog/assets/js/app.db8b6553.js" defer></script><script src="/myBlog/assets/js/6.fa32d2d0.js" defer></script>
+  </body>
+</html>
